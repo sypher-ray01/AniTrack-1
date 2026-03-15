@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Page not found — AniTrack.">
+  <meta name="theme-color" content="#0D0D0D">
+  <title>404 Not Found — AniTrack</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/404.css">
+  <script>const t=localStorage.getItem('at_theme');if(t)document.documentElement.dataset.theme=t;</script>
+</head>
+<body data-page="404" data-theme="dark">
+
+  <main class="not-found-wrapper">
+    <div class="not-found-code">404</div>
+    <h1 class="not-found-title">Page Not Found</h1>
+    <p class="not-found-message">Oops! Looks like this anime episode hasn't aired yet, or the page you're looking for simply doesn't exist.</p>
+    
+    <div class="not-found-actions">
+      <a href="index.html" class="btn btn-primary">Go Home</a>
+    </div>
+  </main>
+
+  <!-- Load minimal JS for theme application -->
+  <script src="js/storage.js"></script>
+  <script src="js/theme.js"></script>
+  <script>
+    // Initialize theme only, since there's no navbar or complex app logic needed here
+    window.AniTheme = window.AniTheme || {};
+    window.AniTheme.init = function() {
+      const u = window.AniStorage ? window.AniStorage.getUser() : null;
+      const isDark = u ? u.darkMode !== false : true;
+      document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    };
+    document.addEventListener('DOMContentLoaded', window.AniTheme.init);
+  </script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - AniTrack</title>
+  
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+
+  <script>
+    document.documentElement.dataset.theme = 
+    localStorage.getItem('at_theme') || 'dark';
+  </script>
+
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-primary);
+      font-family: var(--font);
+      padding: 16px;
+    }
+    #auth-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: var(--shadow-lg);
+    }
+    #logo {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--accent-primary);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    #tagline {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      margin-bottom: 24px;
+    }
+    #tab-bar {
+      display: flex;
+      background: var(--bg-surface);
+      border-radius: var(--radius);
+      padding: 4px;
+      margin-bottom: 24px;
+      gap: 4px;
+    }
+    .tab {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      font-family: var(--font);
+    }
+    .tab.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .field label {
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: var(--text-secondary);
+    }
+    .field input {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-input);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      color: var(--text-primary);
+      font-size: var(--text-base);
+      font-family: var(--font);
+      width: 100%;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .field input:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .field input.invalid {
+      border-color: var(--error);
+    }
+    .field-error {
+      font-size: var(--text-xs);
+      color: var(--error);
+      min-height: 16px;
+    }
+    .form-error {
+      display: block;
+      font-size: var(--text-sm);
+      color: var(--error);
+      margin-bottom: 12px;
+      min-height: 20px;
+      text-align: center;
+    }
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      background: var(--accent-primary);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: var(--text-base);
+      font-weight: var(--font-semibold);
+      font-family: var(--font);
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .switch-text {
+      text-align: center;
+      margin-top: 16px;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+    .switch-link {
+      color: var(--accent-primary);
+      cursor: pointer;
+      font-weight: var(--font-medium);
+    }
+    .switch-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div id="auth-card">
+    <!-- Logo -->
+    <div id="logo">AniTrack</div>
+    <p id="tagline">Track, discover, and share your anime journey.</p>
+
+    <!-- Tab switcher -->
+    <div id="tab-bar">
+      <button id="tab-login" class="tab active">Sign In</button>
+      <button id="tab-register" class="tab">Create Account</button>
+    </div>
+
+    <!-- SIGN IN FORM -->
+    <div id="login-form">
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="login-username" placeholder="Your username">
+        <span class="field-error" id="login-username-error"></span>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="login-password" placeholder="••••••••">
+        <span class="field-error" id="login-password-error"></span>
+      </div>
+      <span class="form-error" id="login-error"></span>
+      <button id="login-btn" class="btn-primary">Sign In</button>
+      <p class="switch-text">
+        Don't have an account? 
+        <span class="switch-link" id="go-register">Create one</span>
+      </p>
+    </div>
+
+    <!-- CREATE ACCOUNT FORM -->
+    <div id="register-form" style="display:none">
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="reg-username" placeholder="Choose a username">
+        <span class="field-error" id="reg-username-error"></span>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="reg-email" placeholder="you@example.com">
+        <span class="field-error" id="reg-email-error"></span>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="reg-password" placeholder="Min 6 characters">
+        <span class="field-error" id="reg-password-error"></span>
+      </div>
+      <div class="field">
+        <label>Confirm Password</label>
+        <input type="password" id="reg-confirm" placeholder="Repeat password">
+        <span class="field-error" id="reg-confirm-error"></span>
+      </div>
+      <span class="form-error" id="reg-error"></span>
+      <button id="register-btn" class="btn-primary">Create Account</button>
+      <p class="switch-text">
+        Already have an account? 
+        <span class="switch-link" id="go-login">Sign In</span>
+      </p>
+    </div>
+  </div>
+
+<script>
+// ── Tab switching ──────────────────────────────
+const tabLogin = document.getElementById('tab-login')
+const tabRegister = document.getElementById('tab-register')
+const loginForm = document.getElementById('login-form')
+const registerForm = document.getElementById('register-form')
+
+const showLogin = () => {
+  loginForm.style.display = 'block'
+  registerForm.style.display = 'none'
+  tabLogin.classList.add('active')
+  tabRegister.classList.remove('active')
+  clearAllErrors()
+}
+const showRegister = () => {
+  registerForm.style.display = 'block'
+  loginForm.style.display = 'none'
+  tabRegister.classList.add('active')
+  tabLogin.classList.remove('active')
+  clearAllErrors()
+}
+
+tabLogin.addEventListener('click', showLogin)
+tabRegister.addEventListener('click', showRegister)
+document.getElementById('go-register').addEventListener('click', showRegister)
+document.getElementById('go-login').addEventListener('click', showLogin)
+
+// ── Error helpers ──────────────────────────────
+const setError = (id, msg) => {
+  const el = document.getElementById(id)
+  if (el) el.textContent = msg
+}
+const clearError = (id) => {
+  const el = document.getElementById(id)
+  if (el) el.textContent = ''
+}
+const setInvalid = (inputId, errorId, msg) => {
+  const input = document.getElementById(inputId)
+  if (input) input.classList.add('invalid')
+  setError(errorId, msg)
+}
+const clearAllErrors = () => {
+  ['login-username-error','login-password-error','login-error',
+   'reg-username-error','reg-email-error','reg-password-error',
+   'reg-confirm-error','reg-error'].forEach(id => setError(id,''))
+  document.querySelectorAll('.invalid').forEach(el => 
+    el.classList.remove('invalid'))
+}
+
+// ── Hash password (SHA-256) ────────────────────
+const hashPassword = async (password) => {
+  const encoder = new TextEncoder()
+  const data = encoder.encode(password)
+  const hash = await crypto.subtle.digest('SHA-256', data)
+  return Array.from(new Uint8Array(hash))
+    .map(b => b.toString(16).padStart(2,'0')).join('')
+}
+
+// ── Storage helpers (inline — no imports needed) ──
+const getUsers = () => {
+  try { return JSON.parse(localStorage.getItem('at_users')) || [] }
+  catch { return [] }
+}
+const saveUsers = (users) => {
+  localStorage.setItem('at_users', JSON.stringify(users))
+}
+const createSession = (user) => {
+  const session = {
+    userId: user.id,
+    token: crypto.randomUUID(),
+    expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
+  }
+  localStorage.setItem('at_session', JSON.stringify(session))
+  const { passwordHash, ...safeUser } = user
+  localStorage.setItem('at_user', JSON.stringify(safeUser))
+}
+
+// ── Sign In ────────────────────────────────────
+document.getElementById('login-btn').addEventListener('click', async () => {
+  clearAllErrors()
+  const username = document.getElementById('login-username').value.trim()
+  const password = document.getElementById('login-password').value
+
+  let valid = true
+  if (!username) {
+    setInvalid('login-username','login-username-error','Username is required')
+    valid = false
+  }
+  if (!password) {
+    setInvalid('login-password','login-password-error','Password is required')
+    valid = false
+  }
+  if (!valid) return
+
+  const btn = document.getElementById('login-btn')
+  btn.disabled = true
+  btn.textContent = 'Signing in...'
+
+  try {
+    const users = getUsers()
+    const user = users.find(u => u.username.toLowerCase() === username.toLowerCase())
+    if (!user) {
+      setError('login-error', 'Invalid username or password')
+      btn.disabled = false
+      btn.textContent = 'Sign In'
+      return
+    }
+    const hash = await hashPassword(password)
+    if (hash !== user.passwordHash) {
+      setError('login-error', 'Invalid username or password')
+      btn.disabled = false
+      btn.textContent = 'Sign In'
+      return
+    }
+    createSession(user)
+    location.href = 'index.html'
+  } catch(e) {
+    setError('login-error', 'Something went wrong. Try again.')
+    btn.disabled = false
+    btn.textContent = 'Sign In'
+  }
+})
+
+// ── Create Account ─────────────────────────────
+document.getElementById('register-btn').addEventListener('click', async () => {
+  clearAllErrors()
+  const username = document.getElementById('reg-username').value.trim()
+  const email    = document.getElementById('reg-email').value.trim()
+  const password = document.getElementById('reg-password').value
+  const confirm  = document.getElementById('reg-confirm').value
+
+  let valid = true
+  if (!username || username.length < 3) {
+    setInvalid('reg-username','reg-username-error',
+      'Username must be at least 3 characters')
+    valid = false
+  }
+  if (!email || !email.includes('@')) {
+    setInvalid('reg-email','reg-email-error','Valid email required')
+    valid = false
+  }
+  if (!password || password.length < 6) {
+    setInvalid('reg-password','reg-password-error',
+      'Password must be at least 6 characters')
+    valid = false
+  }
+  if (password !== confirm) {
+    setInvalid('reg-confirm','reg-confirm-error','Passwords do not match')
+    valid = false
+  }
+  if (!valid) return
+
+  const users = getUsers()
+  if (users.some(u => u.username.toLowerCase() === username.toLowerCase())) {
+    setInvalid('reg-username','reg-username-error','Username already taken')
+    return
+  }
+  if (users.some(u => u.email.toLowerCase() === email.toLowerCase())) {
+    setInvalid('reg-email','reg-email-error','Email already registered')
+    return
+  }
+
+  const btn = document.getElementById('register-btn')
+  btn.disabled = true
+  btn.textContent = 'Creating account...'
+
+  try {
+    const passwordHash = await hashPassword(password)
+    const user = {
+      id: 'usr_' + crypto.randomUUID().slice(0,8),
+      username,
+      email,
+      passwordHash,
+      avatar: '',
+      bio: '',
+      darkMode: true,
+      isAdmin: false,
+      joinedAt: new Date().toISOString(),
+      stats: {
+        totalAnime: 0,
+        episodesWatched: 0,
+        daysWatched: 0,
+        meanScore: 0,
+      }
+    }
+    users.push(user)
+    saveUsers(users)
+    createSession(user)
+    location.href = 'index.html'
+  } catch(e) {
+    setError('reg-error', 'Something went wrong. Try again.')
+    btn.disabled = false
+    btn.textContent = 'Create Account'
+  }
+})
+</script>
+
+</body>
+</html>

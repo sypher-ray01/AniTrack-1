@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover and join clubs around your favorite anime and genres on AniTrack.">
+  <meta name="theme-color" content="#0D0D0D">
+  <title>Clubs — AniTrack</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/toast.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/badges.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/clubs.css">
+  <script>const t=localStorage.getItem('at_theme');if(t)document.documentElement.dataset.theme=t;</script>
+</head>
+<body data-page="clubs" data-theme="dark">
+
+  <nav id="navbar"></nav>
+
+  <main class="page-wrapper">
+    <div class="container">
+      <section class="section">
+
+        <!-- ═══ Page Header ═══ -->
+        <header class="clubs-header">
+          <h1 class="clubs-title">👥 Clubs</h1>
+          <div class="clubs-toolbar">
+            <div class="search-bar clubs-search">
+              <span class="search-bar-icon">🔍</span>
+              <input type="text" class="search-bar-input" id="search-clubs" placeholder="Find a club…">
+            </div>
+            <button class="btn btn-primary" id="btn-create-club">Create Club</button>
+          </div>
+        </header>
+
+        <!-- ═══ Clubs Grid ═══ -->
+        <div class="clubs-grid" id="clubs-grid">
+          
+          <!-- Club Card Skeleton -->
+          <div class="club-card">
+            <div class="club-card-banner skeleton"></div>
+            <div class="club-card-body">
+              <div class="club-card-title skeleton" style="height:20px;width:70%;border-radius:4px;margin-bottom:8px"></div>
+              <div class="club-card-desc">
+                <div class="skeleton" style="height:14px;width:100%;border-radius:3px;margin-bottom:4px"></div>
+                <div class="skeleton" style="height:14px;width:80%;border-radius:3px"></div>
+              </div>
+              <div class="club-card-tags">
+                <span class="skeleton" style="height:20px;width:50px;border-radius:12px"></span>
+                <span class="skeleton" style="height:20px;width:65px;border-radius:12px"></span>
+              </div>
+              <div class="club-card-footer">
+                <div class="club-card-stats">
+                  <span class="skeleton" style="height:14px;width:80px;border-radius:3px"></span>
+                </div>
+                <div class="skeleton" style="height:32px;width:60px;border-radius:6px"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="club-card">
+            <div class="club-card-banner skeleton"></div>
+            <div class="club-card-body">
+              <div class="club-card-title skeleton" style="height:20px;width:85%;border-radius:4px;margin-bottom:8px"></div>
+              <div class="club-card-desc">
+                <div class="skeleton" style="height:14px;width:100%;border-radius:3px;margin-bottom:4px"></div>
+                <div class="skeleton" style="height:14px;width:90%;border-radius:3px"></div>
+              </div>
+              <div class="club-card-tags">
+                <span class="skeleton" style="height:20px;width:70px;border-radius:12px"></span>
+                <span class="skeleton" style="height:20px;width:45px;border-radius:12px"></span>
+              </div>
+              <div class="club-card-footer">
+                <div class="club-card-stats">
+                  <span class="skeleton" style="height:14px;width:95px;border-radius:3px"></span>
+                </div>
+                <div class="skeleton" style="height:32px;width:60px;border-radius:6px"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="club-card">
+            <div class="club-card-banner skeleton"></div>
+            <div class="club-card-body">
+              <div class="club-card-title skeleton" style="height:20px;width:60%;border-radius:4px;margin-bottom:8px"></div>
+              <div class="club-card-desc">
+                <div class="skeleton" style="height:14px;width:100%;border-radius:3px;margin-bottom:4px"></div>
+                <div class="skeleton" style="height:14px;width:75%;border-radius:3px"></div>
+              </div>
+              <div class="club-card-tags">
+                <span class="skeleton" style="height:20px;width:60px;border-radius:12px"></span>
+              </div>
+              <div class="club-card-footer">
+                <div class="club-card-stats">
+                  <span class="skeleton" style="height:14px;width:70px;border-radius:3px"></span>
+                </div>
+                <div class="skeleton" style="height:32px;width:60px;border-radius:6px"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="club-card">
+            <div class="club-card-banner skeleton"></div>
+            <div class="club-card-body">
+              <div class="club-card-title skeleton" style="height:20px;width:80%;border-radius:4px;margin-bottom:8px"></div>
+              <div class="club-card-desc">
+                <div class="skeleton" style="height:14px;width:100%;border-radius:3px;margin-bottom:4px"></div>
+                <div class="skeleton" style="height:14px;width:85%;border-radius:3px"></div>
+              </div>
+              <div class="club-card-tags">
+                <span class="skeleton" style="height:20px;width:65px;border-radius:12px"></span>
+                <span class="skeleton" style="height:20px;width:55px;border-radius:12px"></span>
+                <span class="skeleton" style="height:20px;width:40px;border-radius:12px"></span>
+              </div>
+              <div class="club-card-footer">
+                <div class="club-card-stats">
+                  <span class="skeleton" style="height:14px;width:85px;border-radius:3px"></span>
+                </div>
+                <div class="skeleton" style="height:32px;width:60px;border-radius:6px"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ═══ Empty State ═══ -->
+        <div class="empty-state hidden" id="clubs-empty">
+          <div class="empty-state-icon">🏜️</div>
+          <h3 class="empty-state-title">No clubs found</h3>
+          <p class="empty-state-desc">Try searching for something else or create your own club.</p>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- ═══ Create Club Modal ═══ -->
+  <div class="modal-overlay hidden" id="modal-create-club">
+    <div class="modal dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Create a New Club</h3>
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-create-club">
+          <div class="form-group mb-sm">
+            <label class="form-label" for="club-name">Club Name</label>
+            <input type="text" class="form-input" id="club-name" placeholder="e.g. Mecha Enthusiasts" required>
+          </div>
+          <div class="form-group mb-sm">
+            <label class="form-label" for="club-desc">Description</label>
+            <textarea class="form-input form-textarea" id="club-desc" placeholder="What is this club about?" required></textarea>
+          </div>
+          <div class="form-group mb-sm">
+            <label class="form-label" for="club-banner">Banner Image URL</label>
+            <input type="url" class="form-input" id="club-banner" placeholder="https://example.com/image.jpg">
+          </div>
+          <div class="form-group mb-sm">
+            <label class="form-label" for="club-tags">Tags (comma separated)</label>
+            <input type="text" class="form-input" id="club-tags" placeholder="Mecha, Sci-Fi, Discussion">
+          </div>
+          <div class="auth-checkbox mb-md">
+            <input type="checkbox" id="club-private">
+            <label for="club-private">Make this club Private (invite only)</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary modal-cancel">Cancel</button>
+        <button onclick="createClub()" class="btn-primary">Create Club</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/api-bridge.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/shortcuts.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof guardRoute === 'function') guardRoute()
+      if (typeof loadClubs === 'function') loadClubs()
+    })
+  </script>
+</body>
+</html>

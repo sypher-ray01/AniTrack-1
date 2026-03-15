@@ -1,0 +1,217 @@
+/* ============================================
+   AniTrack — Help & FAQ Styles
+   Accordions · Keyboard Shortcuts · Contact
+   ============================================ */
+
+/* ── Help Header ───────────────────────────── */
+.help-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  padding: var(--space-xl) 0;
+}
+
+.help-title {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.help-subtitle {
+  font-size: var(--fs-lg);
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── FAQ Accordion ─────────────────────────── */
+.faq-section {
+  max-width: 800px;
+  margin: 0 auto var(--space-3xl);
+}
+
+.section-title {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-sm);
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.faq-item {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.faq-item:hover {
+  border-color: var(--border-input);
+}
+
+/* When open, change border */
+.faq-item.open {
+  border-color: var(--accent-primary);
+}
+
+.faq-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.faq-question {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+  padding-right: var(--space-md);
+}
+
+.faq-icon {
+  color: var(--accent-primary);
+  transition: transform var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* JS will toggle 'open' class to rotate icon */
+.faq-item.open .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-content {
+  display: none; /* JS will toggle to block/flex */
+  padding: 0 var(--space-lg) var(--space-lg);
+  color: var(--text-secondary);
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+  border-top: 1px dashed var(--border-subtle);
+  margin-top: -8px; /* Offset to connect nicely */
+  padding-top: var(--space-lg);
+}
+
+/* Show content when open class is applied */
+.faq-item.open .faq-content {
+  display: block;
+}
+
+.faq-content a {
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+.faq-content a:hover {
+  text-decoration: underline;
+}
+
+/* ── Keyboard Shortcuts ────────────────────── */
+.shortcuts-section {
+  max-width: 800px;
+  margin: 0 auto var(--space-3xl);
+}
+
+.shortcuts-table-wrap {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.shortcuts-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.shortcuts-table th,
+.shortcuts-table td {
+  padding: var(--space-md) var(--space-lg);
+  text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.shortcuts-table th {
+  background: var(--bg-surface);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.shortcuts-table tr:last-child td {
+  border-bottom: none;
+}
+
+.shortcuts-table td {
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.kbd {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-family: monospace;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-muted);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 0 var(--border-muted);
+  margin-right: 4px;
+}
+
+/* ── Contact Section ───────────────────────── */
+.contact-section {
+  max-width: 800px;
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+}
+
+.contact-card {
+  background-color: var(--bg-card);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.contact-icon {
+  font-size: 32px;
+  color: var(--accent-primary);
+}
+
+.contact-text {
+  font-size: var(--fs-base);
+  color: var(--text-secondary);
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 768px) {
+  .help-title {
+    font-size: var(--fs-2xl);
+  }
+  .shortcuts-table th,
+  .shortcuts-table td {
+    padding: var(--space-sm) var(--space-md);
+  }
+}

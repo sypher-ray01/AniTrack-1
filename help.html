@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Help, FAQ, and Keyboard Shortcuts for AniTrack.">
+  <meta name="theme-color" content="#0D0D0D">
+  <title>Help & FAQ — AniTrack</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/toast.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/help.css">
+  <script>const t=localStorage.getItem('at_theme');if(t)document.documentElement.dataset.theme=t;</script>
+</head>
+<body data-page="help" data-theme="dark">
+
+  <nav id="navbar"></nav>
+
+  <main class="page-wrapper">
+    <div class="container">
+      
+      <!-- ═══ Page Header ═══ -->
+      <header class="help-header">
+        <h1 class="help-title">Help & FAQ</h1>
+        <p class="help-subtitle">Everything you need to know about using AniTrack, including frequently asked questions and keyboard shortcuts.</p>
+      </header>
+
+      <!-- ═══ FAQ Section ═══ -->
+      <section class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        
+        <div class="faq-list">
+          
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              <span class="faq-question">How do I add anime to my Watchlist?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-content">
+              You can add anime to your Watchlist from any anime card or detail page by clicking the "+ Add" button. You'll be prompted to select a status (Watching, Completed, On Hold, Dropped, or Plan to Watch).
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              <span class="faq-question">How can I share my Watchlist with others?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-content">
+              While on the Watchlist page, look for the "Share" button in the toolbar. This will generate a unique text token that you can send to your friends. They can use the "Import" function to view your list!
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              <span class="faq-question">What is the Admin Panel and who can access it?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-content">
+              The Admin Panel is a restricted area of AniTrack used for content moderation, such as reviewing user reports and making global announcements. Only accounts with the "Admin" privilege flag can enter this view.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              <span class="faq-question">How do I set episode reminders?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-content">
+              On any currently airing anime's detail page, click the "Remind Me" bell icon next to the next episode air date. You will need to allow browser notification permissions when prompted.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              <span class="faq-question">How do I create a Club?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-content">
+              Navigate to the Clubs directory page and click the primary "Create Club" button in the top right. You can set a custom banner, description, tags, and choose whether the club is Public or Private.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              <span class="faq-question">How do browser reminders actually work?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-content">
+              AniTrack uses the Web Notifications API and Service Workers. This means as long as you have the browser open (or the PWA installed on your device), you will receive a native push notification precisely when the episode drops.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              <span class="faq-question">Can I export all my data?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-content">
+              Yes! You can export your entire Watchlist as a CSV file from the Watchlist page. You can also export your raw JSON profile data from the Account Settings section in your Profile.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              <span class="faq-question">How do I install AniTrack as an app (PWA)?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-content">
+              On Chrome or Edge, click the "Install" icon in your URL bar, or open the browser menu and select "Install AniTrack". On iOS/Safari, tap the Share button and select "Add to Home Screen".
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ═══ Keyboard Shortcuts ═══ -->
+      <section class="shortcuts-section">
+        <h2 class="section-title">Keyboard Shortcuts</h2>
+        
+        <div class="shortcuts-table-wrap">
+          <table class="shortcuts-table">
+            <thead>
+              <tr>
+                <th>Key Binding</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="kbd">/</span></td>
+                <td>Focus search input globally</td>
+              </tr>
+              <tr>
+                <td><span class="kbd">W</span></td>
+                <td>Go to Watchlist</td>
+              </tr>
+              <tr>
+                <td><span class="kbd">H</span></td>
+                <td>Go to Home</td>
+              </tr>
+              <tr>
+                <td><span class="kbd">S</span></td>
+                <td>Go to Search</td>
+              </tr>
+              <tr>
+                <td><span class="kbd">A</span></td>
+                <td>Go to Analytics</td>
+              </tr>
+              <tr>
+                <td><span class="kbd">D</span></td>
+                <td>Toggle Dark/Light mode theme</td>
+              </tr>
+              <tr>
+                <td><span class="kbd">ESC</span></td>
+                <td>Close modal / clear search</td>
+              </tr>
+              <tr>
+                <td><span class="kbd">?</span></td>
+                <td>Open keyboard shortcuts help modal</td>
+              </tr>
+              <tr>
+                <td><span class="kbd">Ctrl</span> + <span class="kbd">K</span></td>
+                <td>Open command palette (quick search)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══ Contact ═══ -->
+      <section class="contact-section">
+        <div class="contact-card">
+          <div class="contact-icon">✉️</div>
+          <h3 style="font-size:var(--fs-xl);font-weight:var(--fw-bold);color:var(--text-primary)">Still need help?</h3>
+          <p class="contact-text">If you encounter any bugs or have feature requests, please contact the developer.</p>
+          <a href="mailto:himanshujangid201@gmail.com" class="btn btn-primary" style="margin-top:var(--space-sm)">Email Support</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/api-bridge.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/shortcuts.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

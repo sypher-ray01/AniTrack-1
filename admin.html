@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administration panel for AniTrack.">
+  <meta name="theme-color" content="#0D0D0D">
+  <title>Admin Panel — AniTrack</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/toast.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/badges.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script>const t=localStorage.getItem('at_theme');if(t)document.documentElement.dataset.theme=t;</script>
+</head>
+<body data-page="admin" data-theme="dark">
+
+  <nav id="navbar"></nav>
+
+  <main class="page-wrapper">
+    <div class="container">
+      <section class="section">
+
+        <!-- ═══ Admin Header ═══ -->
+        <header class="admin-header">
+          <div class="admin-title-wrap">
+            <h1 class="admin-title">Admin Dashboard</h1>
+            <span class="admin-badge">🛡️ Admin Panel</span>
+          </div>
+        </header>
+
+        <!-- ═══ Tabs Nav ═══ -->
+        <div class="admin-tabs">
+          <div class="admin-tab active" data-target="tab-users">Users</div>
+          <div class="admin-tab" data-target="tab-reports">Reports</div>
+          <div class="admin-tab" data-target="tab-announcements">Announcements</div>
+        </div>
+
+        <!-- ═══ Tab: Users (Active) ═══ -->
+        <div id="tab-users" class="tab-content">
+          <div class="admin-toolbar">
+            <div class="search-bar admin-search">
+              <span class="search-bar-icon">🔍</span>
+              <input type="text" class="search-bar-input" placeholder="Search by username or email…">
+            </div>
+          </div>
+
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Joined</th>
+                  <th>Watchlist Size</th>
+                  <th>Admin Privilege</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="user-avatar" style="background:var(--accent-gold)">S</div>
+                      <span class="user-name">super_weeb99</span>
+                    </div>
+                  </td>
+                  <td>Oct 24, 2025</td>
+                  <td>142 shows</td>
+                  <td>
+                    <label class="admin-toggle">
+                      <input type="checkbox">
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </td>
+                  <td><button class="btn-ban">Ban User</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="user-avatar">A</div>
+                      <span class="user-name">AdminMaster</span>
+                    </div>
+                  </td>
+                  <td>Jan 01, 2024</td>
+                  <td>58 shows</td>
+                  <td>
+                    <label class="admin-toggle">
+                      <input type="checkbox" checked disabled>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </td>
+                  <td><button class="btn-ban" disabled style="opacity:0.5;cursor:not-allowed">Ban User</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="user-avatar" style="background:var(--status-dropped)">T</div>
+                      <span class="user-name user-banned">troll_account</span>
+                    </div>
+                  </td>
+                  <td>Mar 15, 2026</td>
+                  <td>3 shows</td>
+                  <td>
+                    <label class="admin-toggle">
+                      <input type="checkbox" disabled>
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </td>
+                  <td><button class="btn btn-secondary" style="padding:4px 8px;font-size:12px">Unban</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="user-avatar" style="background:var(--status-complete)">K</div>
+                      <span class="user-name">kirito_fan</span>
+                    </div>
+                  </td>
+                  <td>Feb 19, 2026</td>
+                  <td>27 shows</td>
+                  <td>
+                    <label class="admin-toggle">
+                      <input type="checkbox">
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </td>
+                  <td><button class="btn-ban">Ban User</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="user-avatar" style="background:var(--status-planned)">N</div>
+                      <span class="user-name">naruto_uzumaki</span>
+                    </div>
+                  </td>
+                  <td>Nov 11, 2025</td>
+                  <td>900 shows</td>
+                  <td>
+                    <label class="admin-toggle">
+                      <input type="checkbox">
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </td>
+                  <td><button class="btn-ban">Ban User</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="admin-pagination">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <span style="color:var(--text-muted)">...</span>
+            <button class="page-btn">14</button>
+          </div>
+        </div>
+
+        <!-- ═══ Tab: Reports (Hidden) ═══ -->
+        <div id="tab-reports" class="tab-content hidden">
+          <div class="admin-toolbar">
+            <div class="admin-filters">
+              <button class="admin-filter-btn active">All</button>
+              <button class="admin-filter-btn">Reviews</button>
+              <button class="admin-filter-btn">Threads</button>
+              <button class="admin-filter-btn">Replies</button>
+            </div>
+          </div>
+
+          <div class="reports-grid">
+            
+            <div class="report-card">
+              <div class="report-header">
+                <div class="report-info">
+                  <span class="report-type">Thread Reply</span>
+                  <span class="report-reason">Reason: Harassment / Hate Speech</span>
+                  <span class="report-meta">Reported by <strong>user123</strong> • 2 hours ago</span>
+                </div>
+              </div>
+              <div class="report-content">
+                "You have trash taste formatting your reviews like that, nobody cares."
+              </div>
+              <div class="report-actions">
+                <button class="btn btn-primary" style="background-color:var(--status-dropped);color:white">Remove Content</button>
+                <button class="btn btn-secondary">Dismiss Report</button>
+              </div>
+            </div>
+
+            <div class="report-card">
+              <div class="report-header">
+                <div class="report-info">
+                  <span class="report-type">Review</span>
+                  <span class="report-reason">Reason: Unmarked Spoilers</span>
+                  <span class="report-meta">Reported by <strong>anime_watcher</strong> • 5 hours ago</span>
+                </div>
+              </div>
+              <div class="report-content">
+                "I can't believe the main character dies at the end of episode 12! Total shocker."
+              </div>
+              <div class="report-actions">
+                <button class="btn btn-primary" style="background-color:var(--status-dropped);color:white">Remove Content</button>
+                <button class="btn btn-secondary">Dismiss Report</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ═══ Tab: Announcements (Hidden) ═══ -->
+        <div id="tab-announcements" class="tab-content hidden">
+          
+          <div class="announcement-card">
+            <h3 class="announcement-card-title">Current Global Announcement</h3>
+            <div class="current-announcement">
+              <strong>Maintenance Notice:</strong> AniTrack will be down for scheduled API upgrades on Sunday at 2 AM EST. We expect 30 minutes of downtime. Thank you for your patience!
+            </div>
+          </div>
+
+          <div class="announcement-card">
+            <h3 class="announcement-card-title">Publish New Announcement</h3>
+            <form class="announcement-form">
+              <div class="form-group">
+                <label class="form-label" for="announce-text">Announcement Text (Markdown supported)</label>
+                <textarea class="form-input form-textarea" id="announce-text" rows="4" placeholder="Enter message here..."></textarea>
+              </div>
+              <div class="announcement-form-footer">
+                <div class="auth-checkbox">
+                  <input type="checkbox" id="announce-active" checked>
+                  <label for="announce-active">Set Active immediately</label>
+                </div>
+                <button type="button" class="btn btn-primary">Save Announcement</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/api-bridge.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/shortcuts.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

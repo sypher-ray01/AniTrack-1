@@ -1,0 +1,49 @@
+/* ============================================
+   AniTrack — Light Theme Overrides + Transitions
+   ============================================ */
+
+/* ── Theme Transition ──────────────────────── */
+body,
+.navbar,
+.card,
+.modal,
+.toast,
+.form-input,
+.badge,
+.tag {
+  transition: background-color var(--transition-theme),
+              color var(--transition-theme),
+              border-color var(--transition-theme),
+              box-shadow var(--transition-theme);
+}
+
+/* ── Light Theme ───────────────────────────── */
+body[data-theme="light"] {
+  --bg-primary: #F0F2F8;
+  --bg-card: #FFFFFF;
+  --bg-surface: #E8EAF2;
+  --bg-hover: #DCDFF0;
+  --bg-input: #FFFFFF;
+  --bg-overlay: rgba(0, 0, 0, 0.4);
+  --bg-backdrop: rgba(240, 242, 248, 0.9);
+
+  --text-primary: #1A1A2E;
+  --text-secondary: #44446A;
+  --text-muted: #8888A8;
+  --text-inverse: #FFFFFF;
+
+  --border-subtle: #D5D8EE;
+  --border-input: #C0C4DE;
+
+  --scrollbar-track: #E8EAF2;
+  --scrollbar-thumb: #C0C4DE;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-glow: 0 0 20px rgba(232, 0, 77, 0.15);
+
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: 1px solid rgba(0, 0, 0, 0.06);
+}

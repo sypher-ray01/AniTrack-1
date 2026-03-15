@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search and discover anime — filter by genre, year, status, language, and more on AniTrack.">
+  <meta name="theme-color" content="#0D0D0D">
+  <title>Search Anime — AniTrack</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/toast.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/badges.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/search.css">
+  <script>const t=localStorage.getItem('at_theme');if(t)document.documentElement.dataset.theme=t;</script>
+</head>
+<body data-page="search" data-theme="dark">
+
+  <nav id="navbar"></nav>
+
+  <main class="page-wrapper">
+    <div class="container">
+      <section class="section-sm">
+
+        <!-- ═══ Search Bar ═══ -->
+        <div class="search-bar">
+          <span class="search-bar-icon">🔍</span>
+          <input
+            type="text"
+            class="search-bar-input"
+            id="search-input"
+            placeholder="Search anime by title…"
+            autocomplete="off"
+          >
+          <button class="search-bar-clear" id="search-clear" aria-label="Clear search">&times;</button>
+        </div>
+
+        <!-- ═══ Active Filter Chips ═══ -->
+        <div class="search-chips" id="search-chips">
+          <!-- JS inserts active filter chips here -->
+        </div>
+
+        <!-- ═══ Mobile Sidebar Toggle ═══ -->
+        <button class="search-sidebar-toggle" id="sidebar-toggle">
+          🎛 Filters & Options
+        </button>
+
+        <!-- ═══ Two-Column Layout ═══ -->
+        <div class="search-layout">
+
+          <!-- ── Filter Sidebar ────────────── -->
+          <aside class="search-sidebar" id="search-sidebar">
+            <div class="search-sidebar-title">
+              Filters
+              <button class="search-sidebar-reset" id="filter-reset">Reset all</button>
+            </div>
+
+            <!-- Genres -->
+            <div class="filter-section">
+              <h4 class="filter-section-title">Genres</h4>
+              <div class="filter-checkbox-list" id="genre-filters">
+                <label class="filter-checkbox"><input type="checkbox" value="1"> Action</label>
+                <label class="filter-checkbox"><input type="checkbox" value="2"> Adventure</label>
+                <label class="filter-checkbox"><input type="checkbox" value="4"> Comedy</label>
+                <label class="filter-checkbox"><input type="checkbox" value="8"> Drama</label>
+                <label class="filter-checkbox"><input type="checkbox" value="10"> Fantasy</label>
+                <label class="filter-checkbox"><input type="checkbox" value="14"> Horror</label>
+                <label class="filter-checkbox"><input type="checkbox" value="22"> Romance</label>
+                <label class="filter-checkbox"><input type="checkbox" value="24"> Sci-Fi</label>
+                <label class="filter-checkbox"><input type="checkbox" value="27"> Shounen</label>
+                <label class="filter-checkbox"><input type="checkbox" value="36"> Slice of Life</label>
+                <label class="filter-checkbox"><input type="checkbox" value="37"> Supernatural</label>
+                <label class="filter-checkbox"><input type="checkbox" value="30"> Sports</label>
+                <label class="filter-checkbox"><input type="checkbox" value="7"> Mystery</label>
+                <label class="filter-checkbox"><input type="checkbox" value="38"> Military</label>
+              </div>
+            </div>
+
+            <!-- Year -->
+            <div class="filter-section">
+              <h4 class="filter-section-title">Year</h4>
+              <select class="filter-select" id="year-filter">
+                <option value="">Any year</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2010-2014">2010 – 2014</option>
+                <option value="2000-2009">2000 – 2009</option>
+                <option value="1990-1999">1990 – 1999</option>
+              </select>
+            </div>
+
+            <!-- Status -->
+            <div class="filter-section">
+              <h4 class="filter-section-title">Status</h4>
+              <div class="filter-radio-group" id="status-filter">
+                <label class="filter-radio"><input type="radio" name="status" value="" checked> Any</label>
+                <label class="filter-radio"><input type="radio" name="status" value="airing"> Airing</label>
+                <label class="filter-radio"><input type="radio" name="status" value="complete"> Completed</label>
+                <label class="filter-radio"><input type="radio" name="status" value="upcoming"> Upcoming</label>
+              </div>
+            </div>
+
+            <!-- Language -->
+            <div class="filter-section">
+              <h4 class="filter-section-title">Language</h4>
+              <div class="filter-radio-group" id="language-filter">
+                <label class="filter-radio"><input type="radio" name="language" value="" checked> Any</label>
+                <label class="filter-radio"><input type="radio" name="language" value="sub"> Sub (Japanese)</label>
+                <label class="filter-radio"><input type="radio" name="language" value="dub"> Dub (English)</label>
+              </div>
+            </div>
+          </aside>
+
+          <!-- ── Results Grid ──────────────── -->
+          <div class="search-results" id="search-results">
+            <div class="search-results-header">
+              <span class="search-results-count" id="results-count">Loading results…</span>
+              <div class="search-results-sort">
+                <label for="sort-select">Sort by</label>
+                <select id="sort-select">
+                  <option value="score" selected>Score</option>
+                  <option value="title">Title</option>
+                  <option value="start_date">Newest</option>
+                  <option value="episodes">Episodes</option>
+                  <option value="popularity">Popularity</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Skeleton placeholder cards -->
+            <div class="search-results-grid" id="results-grid">
+              <div class="skeleton-card"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="search-pagination" id="search-pagination">
+              <!-- JS generates page buttons -->
+            </div>
+
+            <!-- Empty / No Results State (hidden by default) -->
+            <div class="search-empty hidden" id="search-empty">
+              <div class="search-empty-icon">🔎</div>
+              <h3 class="search-empty-title">No results found</h3>
+              <p class="search-empty-desc">
+                Try adjusting your search or filters to find what you're looking for.
+              </p>
+            </div>
+          </div>
+
+        </div><!-- .search-layout -->
+
+      </section>
+    </div>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/api-bridge.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/shortcuts.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

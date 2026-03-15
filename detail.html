@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Anime details — episodes, characters, reviews, trailers, and streaming links on AniTrack.">
+  <meta name="theme-color" content="#0D0D0D">
+  <title>Anime Detail — AniTrack</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/toast.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/badges.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/detail.css">
+  <script>const t=localStorage.getItem('at_theme');if(t)document.documentElement.dataset.theme=t;</script>
+</head>
+<body data-page="detail" data-theme="dark">
+
+  <nav id="navbar"></nav>
+
+  <main class="page-wrapper">
+    <div class="container">
+      <section class="section-sm">
+
+        <!-- ═══ Hero: Cover + Info ═══ -->
+        <div class="detail-hero" id="detail-hero">
+          <!-- Cover Image -->
+          <div class="detail-cover" id="detail-cover">
+            <div class="detail-cover-skeleton skeleton"></div>
+          </div>
+
+          <!-- Info Panel -->
+          <div class="detail-info" id="detail-info">
+            <div>
+              <h1 class="detail-title" id="detail-title">
+                <div class="skeleton" style="height:32px;width:70%;border-radius:6px"></div>
+              </h1>
+              <p class="detail-title-jp" id="detail-title-jp">
+                <span class="skeleton" style="display:inline-block;height:16px;width:180px;border-radius:4px"></span>
+              </p>
+            </div>
+
+            <!-- Score + Rank Row -->
+            <div class="detail-score-row" id="detail-score-row">
+              <div class="skeleton" style="width:80px;height:36px;border-radius:8px"></div>
+              <div class="skeleton" style="width:100px;height:16px;border-radius:4px"></div>
+            </div>
+
+            <!-- Genre Tags -->
+            <div class="detail-genres" id="detail-genres">
+              <span class="skeleton" style="width:60px;height:24px;border-radius:20px"></span>
+              <span class="skeleton" style="width:70px;height:24px;border-radius:20px"></span>
+              <span class="skeleton" style="width:55px;height:24px;border-radius:20px"></span>
+            </div>
+
+            <!-- Synopsis -->
+            <div class="detail-synopsis" id="detail-synopsis">
+              <div class="skeleton-paragraph">
+                <div class="skeleton-text skeleton" style="width:100%"></div>
+                <div class="skeleton-text skeleton" style="width:95%"></div>
+                <div class="skeleton-text skeleton" style="width:85%"></div>
+                <div class="skeleton-text skeleton" style="width:72%"></div>
+              </div>
+            </div>
+
+            <!-- Stat Grid -->
+            <div class="detail-stats" id="detail-stats">
+              <div class="detail-stat">
+                <span class="detail-stat-label">Episodes</span>
+                <span class="detail-stat-value" id="stat-episodes"><span class="skeleton" style="display:inline-block;width:30px;height:16px;border-radius:3px"></span></span>
+              </div>
+              <div class="detail-stat">
+                <span class="detail-stat-label">Status</span>
+                <span class="detail-stat-value" id="stat-status"><span class="skeleton" style="display:inline-block;width:70px;height:16px;border-radius:3px"></span></span>
+              </div>
+              <div class="detail-stat">
+                <span class="detail-stat-label">Aired</span>
+                <span class="detail-stat-value" id="stat-aired"><span class="skeleton" style="display:inline-block;width:120px;height:16px;border-radius:3px"></span></span>
+              </div>
+              <div class="detail-stat">
+                <span class="detail-stat-label">Studio</span>
+                <span class="detail-stat-value" id="stat-studio"><span class="skeleton" style="display:inline-block;width:90px;height:16px;border-radius:3px"></span></span>
+              </div>
+              <div class="detail-stat">
+                <span class="detail-stat-label">Source</span>
+                <span class="detail-stat-value" id="stat-source"><span class="skeleton" style="display:inline-block;width:60px;height:16px;border-radius:3px"></span></span>
+              </div>
+              <div class="detail-stat">
+                <span class="detail-stat-label">Duration</span>
+                <span class="detail-stat-value" id="stat-duration"><span class="skeleton" style="display:inline-block;width:80px;height:16px;border-radius:3px"></span></span>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="detail-actions">
+              <button class="detail-add-btn" id="detail-add-btn">📋 Add to Watchlist</button>
+              <button class="btn btn-secondary" id="detail-reminder-btn">🔔 Set Reminder</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ Trailer ═══ -->
+        <div class="detail-trailer" id="detail-trailer">
+          <h2 class="detail-trailer-title">🎬 Trailer</h2>
+          <div class="detail-trailer-embed" id="trailer-embed">
+            <div class="detail-trailer-placeholder">▶</div>
+          </div>
+        </div>
+
+        <!-- ═══ Tab Bar ═══ -->
+        <div class="detail-tabs" id="detail-tabs">
+          <button class="detail-tab active" data-tab="episodes">
+            Episodes <span class="detail-tab-count" id="tab-count-episodes"></span>
+          </button>
+          <button class="detail-tab" data-tab="characters">
+            Characters <span class="detail-tab-count" id="tab-count-characters"></span>
+          </button>
+          <button class="detail-tab" data-tab="reviews">
+            Reviews <span class="detail-tab-count" id="tab-count-reviews"></span>
+          </button>
+          <button class="detail-tab" data-tab="streaming">
+            Streaming
+          </button>
+        </div>
+
+        <!-- ═══ Tab Content Panels ═══ -->
+
+        <!-- Episodes -->
+        <div class="detail-tab-content active" id="tab-episodes">
+          <div class="detail-episodes-list" id="episodes-list">
+            <div class="detail-episode">
+              <span class="detail-episode-num"><span class="skeleton" style="display:inline-block;width:20px;height:14px;border-radius:3px"></span></span>
+              <span class="detail-episode-title"><span class="skeleton" style="display:inline-block;width:200px;height:14px;border-radius:3px"></span></span>
+              <span class="detail-episode-date"><span class="skeleton" style="display:inline-block;width:80px;height:12px;border-radius:3px"></span></span>
+            </div>
+            <div class="detail-episode">
+              <span class="detail-episode-num"><span class="skeleton" style="display:inline-block;width:20px;height:14px;border-radius:3px"></span></span>
+              <span class="detail-episode-title"><span class="skeleton" style="display:inline-block;width:180px;height:14px;border-radius:3px"></span></span>
+              <span class="detail-episode-date"><span class="skeleton" style="display:inline-block;width:80px;height:12px;border-radius:3px"></span></span>
+            </div>
+            <div class="detail-episode">
+              <span class="detail-episode-num"><span class="skeleton" style="display:inline-block;width:20px;height:14px;border-radius:3px"></span></span>
+              <span class="detail-episode-title"><span class="skeleton" style="display:inline-block;width:240px;height:14px;border-radius:3px"></span></span>
+              <span class="detail-episode-date"><span class="skeleton" style="display:inline-block;width:80px;height:12px;border-radius:3px"></span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Characters -->
+        <div class="detail-tab-content" id="tab-characters">
+          <div class="detail-characters-grid" id="characters-grid">
+            <!-- JS populates character cards -->
+          </div>
+        </div>
+
+        <!-- Reviews -->
+        <div class="detail-tab-content" id="tab-reviews">
+          <!-- Write Review Form Placeholder -->
+          <div class="detail-review" style="margin-bottom:var(--space-lg)">
+            <h3 style="font-size:var(--fs-base);font-weight:var(--fw-semibold);color:var(--text-primary);margin-bottom:var(--space-sm)">Write a Review</h3>
+            <div class="form-group mb-sm">
+              <label class="form-label">Your Rating</label>
+              <div id="review-stars" class="detail-review-stars" style="font-size:var(--fs-lg);cursor:pointer;">☆ ☆ ☆ ☆ ☆</div>
+            </div>
+            <div class="form-group mb-sm">
+              <textarea class="form-input form-textarea" id="review-body" placeholder="Share your thoughts…"></textarea>
+            </div>
+            <div class="auth-checkbox mb-sm">
+              <input type="checkbox" id="review-spoiler">
+              <label for="review-spoiler">Contains spoilers</label>
+            </div>
+            <button class="btn btn-primary" id="review-submit-btn">Submit Review</button>
+          </div>
+
+          <div class="detail-reviews-list" id="reviews-list">
+            <!-- JS populates reviews -->
+          </div>
+        </div>
+
+        <!-- Streaming -->
+        <div class="detail-tab-content" id="tab-streaming">
+          <div class="detail-streaming-list" id="streaming-list">
+            <!-- JS populates streaming platform badges -->
+          </div>
+        </div>
+
+        <!-- ═══ Recommendations Row ═══ -->
+        <div class="detail-recommendations section" id="detail-recommendations">
+          <div class="scroll-row">
+            <div class="scroll-row-header">
+              <h2 class="scroll-row-title">🔗 You Might Also Like</h2>
+            </div>
+            <div class="scroll-row-track" id="recommendations-track">
+              <div class="skeleton-card" style="flex:0 0 180px"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card" style="flex:0 0 180px"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card" style="flex:0 0 180px"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card" style="flex:0 0 180px"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card" style="flex:0 0 180px"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/api-bridge.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/shortcuts.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/detail.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

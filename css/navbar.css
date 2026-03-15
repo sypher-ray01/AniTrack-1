@@ -1,0 +1,393 @@
+/* ============================================
+   AniTrack — Navbar
+   ============================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  z-index: var(--z-navbar);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-lg);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: var(--glass-border);
+  transition: background-color var(--transition-theme);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* ── Logo ──────────────────────────────────── */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.navbar-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-base);
+  color: var(--text-primary);
+}
+
+.navbar-logo-text span {
+  color: var(--accent-primary);
+}
+
+/* ── Nav Links ─────────────────────────────── */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--fs-default);
+  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  text-decoration: none;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-hover);
+}
+
+.nav-link.active {
+  color: var(--accent-primary);
+  background-color: rgba(232, 0, 77, 0.1);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background-color: var(--accent-primary);
+  border-radius: var(--radius-full);
+}
+
+.nav-link-icon {
+  font-size: var(--fs-base);
+  line-height: 1;
+}
+
+.nav-link-shortcut {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  background-color: var(--bg-surface);
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
+  margin-left: var(--space-2xs);
+}
+
+/* ── Right Actions ─────────────────────────── */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+/* ── Theme Toggle ──────────────────────────── */
+.theme-toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+  padding: 0;
+}
+
+.theme-toggle::after {
+  content: '🌙';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  transition: transform var(--transition-base);
+}
+
+body[data-theme="light"] .theme-toggle::after {
+  content: '☀️';
+  transform: translateX(20px);
+}
+
+/* ── User Menu ─────────────────────────────── */
+.navbar-user {
+  position: relative;
+}
+
+.navbar-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-default);
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color var(--transition-fast);
+}
+
+.navbar-avatar:hover {
+  border-color: var(--accent-primary);
+}
+
+.navbar-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* User Dropdown */
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-xs));
+  right: 0;
+  min-width: 200px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all var(--transition-fast);
+  z-index: var(--z-dropdown);
+  overflow: hidden;
+}
+
+.user-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.user-dropdown-header {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.user-dropdown-name {
+  font-size: var(--fs-default);
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+}
+
+.user-dropdown-email {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.user-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  width: 100%;
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--fs-default);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.user-dropdown-item:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.user-dropdown-divider {
+  height: 1px;
+  background-color: var(--border-subtle);
+  margin: var(--space-2xs) 0;
+}
+
+.user-dropdown-item.danger {
+  color: var(--status-dropped);
+}
+
+.user-dropdown-item.danger:hover {
+  background-color: rgba(239, 71, 111, 0.1);
+}
+
+/* ── Login Button ──────────────────────────── */
+.navbar-login {
+  padding: var(--space-xs) var(--space-md);
+  background-color: var(--accent-primary);
+  color: var(--text-primary);
+  font-size: var(--fs-default);
+  font-weight: var(--fw-medium);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+}
+
+.navbar-login:hover {
+  background-color: var(--accent-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ── Mobile Hamburger ──────────────────────── */
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.navbar-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-primary);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-base);
+}
+
+.navbar-hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ── Mobile Nav ────────────────────────────── */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 var(--space-md);
+  }
+
+  .navbar-hamburger {
+    display: flex;
+  }
+
+  .navbar-nav {
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-md);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    transform: translateX(-100%);
+    transition: transform var(--transition-base);
+    overflow-y: auto;
+  }
+
+  .navbar-nav.open {
+    transform: translateX(0);
+  }
+
+  .nav-link {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--fs-base);
+    border-radius: var(--radius-md);
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .nav-link-shortcut {
+    display: none;
+  }
+}
+
+/* ── Announcement Banner ───────────────────── */
+.announcement-banner {
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  color: var(--text-primary);
+  text-align: center;
+  padding: var(--space-xs) var(--space-lg);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  position: relative;
+}
+
+.announcement-banner-close {
+  position: absolute;
+  right: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: var(--fs-base);
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast);
+  padding: 0;
+}
+
+.announcement-banner-close:hover {
+  opacity: 1;
+}

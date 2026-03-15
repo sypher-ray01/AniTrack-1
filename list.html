@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage your anime watchlist — track episodes, rate shows, and organise by status on AniTrack.">
+  <meta name="theme-color" content="#0D0D0D">
+  <title>My Watchlist — AniTrack</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/toast.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/badges.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/watchlist.css">
+  <script>const t=localStorage.getItem('at_theme');if(t)document.documentElement.dataset.theme=t;</script>
+</head>
+<body data-page="watchlist" data-theme="dark">
+
+  <!-- Navbar placeholder -->
+  <nav id="navbar"></nav>
+
+  <main class="page-wrapper">
+    <div class="container">
+
+      <!-- ═══ Page Header ═══ -->
+      <section class="section-sm">
+        <div class="watchlist-header">
+          <h1 class="watchlist-title">My Watchlist</h1>
+          <div class="watchlist-actions">
+            <button class="btn btn-secondary btn-sm" id="watchlist-export-btn">📤 Export</button>
+            <button class="btn btn-secondary btn-sm" id="watchlist-share-btn">🔗 Share</button>
+            <button class="btn btn-primary btn-sm" id="watchlist-add-btn">+ Add Anime</button>
+          </div>
+        </div>
+
+        <!-- ═══ Status Tabs ═══ -->
+        <div class="watchlist-tabs" id="watchlist-tabs">
+          <button class="watchlist-tab active" data-status="all">
+            All <span class="watchlist-tab-count" id="count-all">0</span>
+          </button>
+          <button class="watchlist-tab" data-status="watching">
+            📺 Watching <span class="watchlist-tab-count" id="count-watching">0</span>
+          </button>
+          <button class="watchlist-tab" data-status="completed">
+            ✅ Completed <span class="watchlist-tab-count" id="count-completed">0</span>
+          </button>
+          <button class="watchlist-tab" data-status="on-hold">
+            ⏸ On Hold <span class="watchlist-tab-count" id="count-on-hold">0</span>
+          </button>
+          <button class="watchlist-tab" data-status="dropped">
+            ❌ Dropped <span class="watchlist-tab-count" id="count-dropped">0</span>
+          </button>
+          <button class="watchlist-tab" data-status="plan-to-watch">
+            📋 Plan to Watch <span class="watchlist-tab-count" id="count-plan-to-watch">0</span>
+          </button>
+        </div>
+
+        <!-- ═══ Toolbar ═══ -->
+        <div class="watchlist-toolbar">
+          <div class="watchlist-search">
+            <span class="watchlist-search-icon">🔍</span>
+            <input type="text" class="form-input" id="watchlist-search-input" placeholder="Filter watchlist…">
+          </div>
+          <div class="watchlist-view-toggle">
+            <button class="watchlist-view-btn active" data-view="table" aria-label="Table view">☰</button>
+            <button class="watchlist-view-btn" data-view="grid" aria-label="Grid view">⊞</button>
+          </div>
+        </div>
+
+        <!-- ═══ Watchlist Table ═══ -->
+        <div class="watchlist-table-wrap" id="watchlist-table-wrap">
+          <table class="watchlist-table" id="watchlist-table">
+            <thead>
+              <tr>
+                <th style="width: 40px">#</th>
+                <th>Title</th>
+                <th class="sortable" data-sort="score">Score</th>
+                <th>Progress</th>
+                <th class="sortable" data-sort="episodes">Episodes</th>
+                <th class="sortable" data-sort="type">Type</th>
+                <th>Status</th>
+                <th style="width: 80px">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="watchlist-tbody">
+              <!-- Skeleton rows while loading -->
+              <tr>
+                <td><div class="skeleton" style="width:20px;height:14px"></div></td>
+                <td><div class="watchlist-title-cell"><div class="skeleton" style="width:42px;height:62px;border-radius:4px"></div><div><div class="skeleton" style="width:140px;height:14px;margin-bottom:6px"></div><div class="skeleton" style="width:90px;height:10px"></div></div></div></td>
+                <td><div class="skeleton" style="width:40px;height:14px"></div></td>
+                <td><div class="skeleton" style="width:80px;height:4px;border-radius:4px"></div></td>
+                <td><div class="skeleton" style="width:60px;height:14px"></div></td>
+                <td><div class="skeleton" style="width:40px;height:20px;border-radius:4px"></div></td>
+                <td><div class="skeleton" style="width:70px;height:22px;border-radius:12px"></div></td>
+                <td><div class="skeleton" style="width:50px;height:14px"></div></td>
+              </tr>
+              <tr>
+                <td><div class="skeleton" style="width:20px;height:14px"></div></td>
+                <td><div class="watchlist-title-cell"><div class="skeleton" style="width:42px;height:62px;border-radius:4px"></div><div><div class="skeleton" style="width:120px;height:14px;margin-bottom:6px"></div><div class="skeleton" style="width:80px;height:10px"></div></div></div></td>
+                <td><div class="skeleton" style="width:40px;height:14px"></div></td>
+                <td><div class="skeleton" style="width:80px;height:4px;border-radius:4px"></div></td>
+                <td><div class="skeleton" style="width:60px;height:14px"></div></td>
+                <td><div class="skeleton" style="width:40px;height:20px;border-radius:4px"></div></td>
+                <td><div class="skeleton" style="width:70px;height:22px;border-radius:12px"></div></td>
+                <td><div class="skeleton" style="width:50px;height:14px"></div></td>
+              </tr>
+              <tr>
+                <td><div class="skeleton" style="width:20px;height:14px"></div></td>
+                <td><div class="watchlist-title-cell"><div class="skeleton" style="width:42px;height:62px;border-radius:4px"></div><div><div class="skeleton" style="width:160px;height:14px;margin-bottom:6px"></div><div class="skeleton" style="width:100px;height:10px"></div></div></div></td>
+                <td><div class="skeleton" style="width:40px;height:14px"></div></td>
+                <td><div class="skeleton" style="width:80px;height:4px;border-radius:4px"></div></td>
+                <td><div class="skeleton" style="width:60px;height:14px"></div></td>
+                <td><div class="skeleton" style="width:40px;height:20px;border-radius:4px"></div></td>
+                <td><div class="skeleton" style="width:70px;height:22px;border-radius:12px"></div></td>
+                <td><div class="skeleton" style="width:50px;height:14px"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ═══ Empty State (hidden by default, shown when no items) ═══ -->
+        <div class="watchlist-empty hidden" id="watchlist-empty">
+          <div class="watchlist-empty-icon">📭</div>
+          <h3 class="watchlist-empty-title">Your watchlist is empty</h3>
+          <p class="watchlist-empty-desc">
+            Start adding anime to your watchlist to track your progress,
+            rate shows, and never lose track of what you're watching.
+          </p>
+          <a href="search.html" class="btn btn-primary">🔍 Discover Anime</a>
+        </div>
+
+      </section>
+
+    </div><!-- .container -->
+  </main><!-- .page-wrapper -->
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/api-bridge.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/shortcuts.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/watchlist.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

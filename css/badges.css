@@ -1,0 +1,192 @@
+/* ============================================
+   AniTrack — Badges
+   ============================================ */
+
+/* ── Status Badges ─────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: 2px 10px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-watching {
+  background-color: rgba(0, 180, 216, 0.15);
+  color: var(--status-watching);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+}
+
+.badge-completed {
+  background-color: rgba(6, 214, 160, 0.15);
+  color: var(--status-complete);
+  border: 1px solid rgba(6, 214, 160, 0.3);
+}
+
+.badge-on-hold {
+  background-color: rgba(255, 183, 3, 0.15);
+  color: var(--status-hold);
+  border: 1px solid rgba(255, 183, 3, 0.3);
+}
+
+.badge-dropped {
+  background-color: rgba(239, 71, 111, 0.15);
+  color: var(--status-dropped);
+  border: 1px solid rgba(239, 71, 111, 0.3);
+}
+
+.badge-plan-to-watch {
+  background-color: rgba(131, 56, 236, 0.15);
+  color: var(--status-plan);
+  border: 1px solid rgba(131, 56, 236, 0.3);
+}
+
+/* ── Score Badge ───────────────────────────── */
+.badge-score {
+  background-color: rgba(201, 168, 76, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  font-weight: var(--fw-bold);
+}
+
+.badge-score-high {
+  background-color: rgba(6, 214, 160, 0.15);
+  color: var(--status-complete);
+  border: 1px solid rgba(6, 214, 160, 0.3);
+}
+
+.badge-score-low {
+  background-color: rgba(239, 71, 111, 0.15);
+  color: var(--status-dropped);
+  border: 1px solid rgba(239, 71, 111, 0.3);
+}
+
+/* ── Genre Tags ────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  cursor: default;
+  transition: all var(--transition-fast);
+}
+
+.tag-clickable {
+  cursor: pointer;
+}
+
+.tag-clickable:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+}
+
+.tag-active {
+  background-color: rgba(232, 0, 77, 0.15);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.tag-remove {
+  margin-left: var(--space-2xs);
+  font-size: var(--fs-xs);
+  cursor: pointer;
+  opacity: 0.6;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0;
+}
+
+.tag-remove:hover { opacity: 1; }
+
+/* ── Platform / Streaming Badges ───────────── */
+.platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs) var(--space-xs);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  background-color: var(--bg-surface);
+}
+
+.platform-badge:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.platform-badge-icon { font-size: var(--fs-default); }
+
+/* Platform-specific colors */
+.platform-crunchyroll { border-color: #F47521; }
+.platform-crunchyroll:hover { background-color: rgba(244, 117, 33, 0.15); color: #F47521; }
+.platform-netflix     { border-color: #E50914; }
+.platform-netflix:hover     { background-color: rgba(229, 9, 20, 0.15); color: #E50914; }
+.platform-funimation  { border-color: #5B0BB5; }
+.platform-funimation:hover  { background-color: rgba(91, 11, 181, 0.15); color: #5B0BB5; }
+.platform-hulu        { border-color: #1CE783; }
+.platform-hulu:hover        { background-color: rgba(28, 231, 131, 0.15); color: #1CE783; }
+.platform-amazon      { border-color: #00A8E1; }
+.platform-amazon:hover      { background-color: rgba(0, 168, 225, 0.15); color: #00A8E1; }
+.platform-disney      { border-color: #113CCF; }
+.platform-disney:hover      { background-color: rgba(17, 60, 207, 0.15); color: #113CCF; }
+.platform-hidive      { border-color: #00BAFF; }
+.platform-hidive:hover      { background-color: rgba(0, 186, 255, 0.15); color: #00BAFF; }
+
+/* ── Type Badge ────────────────────────────── */
+.badge-type {
+  padding: 2px 8px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  background-color: var(--bg-surface);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── Airing Badge ──────────────────────────── */
+.badge-airing {
+  background-color: rgba(0, 180, 216, 0.15);
+  color: var(--status-watching);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  animation: airing-pulse 2s ease-in-out infinite;
+}
+
+@keyframes airing-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.7; }
+}
+
+/* ── Notification Count ────────────────────── */
+.badge-count {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  background-color: var(--accent-primary);
+  color: var(--text-primary);
+  border-radius: var(--radius-full);
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Seasonal anime calendar — browse airing shows by day of the week on AniTrack.">
+  <meta name="theme-color" content="#0D0D0D">
+  <title>Seasonal Calendar — AniTrack</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/toast.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/badges.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/seasonal.css">
+  <script>const t=localStorage.getItem('at_theme');if(t)document.documentElement.dataset.theme=t;</script>
+</head>
+<body data-page="seasonal" data-theme="dark">
+
+  <nav id="navbar"></nav>
+
+  <main class="page-wrapper">
+    <div class="container">
+      <section class="section-sm">
+
+        <!-- ═══ Season Selector ═══ -->
+        <div class="season-selector" id="season-selector">
+          <button class="season-arrow" id="season-prev" aria-label="Previous season">‹</button>
+          <select class="season-dropdown" id="season-dropdown">
+            <option value="winter-2026" selected>❄️ Winter 2026</option>
+            <option value="fall-2025">🍂 Fall 2025</option>
+            <option value="summer-2025">☀️ Summer 2025</option>
+            <option value="spring-2025">🌸 Spring 2025</option>
+            <option value="winter-2025">❄️ Winter 2025</option>
+            <option value="fall-2024">🍂 Fall 2024</option>
+            <option value="summer-2024">☀️ Summer 2024</option>
+            <option value="spring-2024">🌸 Spring 2024</option>
+          </select>
+          <button class="season-arrow" id="season-next" aria-label="Next season">›</button>
+        </div>
+
+        <p class="season-label" id="season-label">
+          <strong>❄️ Winter 2026</strong> — Currently Airing
+        </p>
+
+        <!-- ═══ Season Stats Bar ═══ -->
+        <div class="season-stats" id="season-stats">
+          <div class="season-stat">
+            <div class="season-stat-value" id="stat-total"><span class="skeleton" style="display:inline-block;width:24px;height:18px;border-radius:3px"></span></div>
+            <div class="season-stat-label">Total</div>
+          </div>
+          <div class="season-stat">
+            <div class="season-stat-value" id="stat-tv"><span class="skeleton" style="display:inline-block;width:24px;height:18px;border-radius:3px"></span></div>
+            <div class="season-stat-label">TV</div>
+          </div>
+          <div class="season-stat">
+            <div class="season-stat-value" id="stat-movie"><span class="skeleton" style="display:inline-block;width:24px;height:18px;border-radius:3px"></span></div>
+            <div class="season-stat-label">Movie</div>
+          </div>
+          <div class="season-stat">
+            <div class="season-stat-value" id="stat-ona"><span class="skeleton" style="display:inline-block;width:24px;height:18px;border-radius:3px"></span></div>
+            <div class="season-stat-label">ONA</div>
+          </div>
+          <div class="season-stat">
+            <div class="season-stat-value" id="stat-ova"><span class="skeleton" style="display:inline-block;width:24px;height:18px;border-radius:3px"></span></div>
+            <div class="season-stat-label">OVA</div>
+          </div>
+        </div>
+
+        <!-- ═══ 7-Column Day Grid ═══ -->
+        <div class="day-grid-wrap" id="day-grid-wrap">
+          <div class="day-grid" id="day-grid">
+
+            <!-- Monday -->
+            <div class="day-column">
+              <div class="day-header">Mon</div>
+              <div class="day-cards" data-day="monday">
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+              </div>
+            </div>
+
+            <!-- Tuesday -->
+            <div class="day-column">
+              <div class="day-header">Tue</div>
+              <div class="day-cards" data-day="tuesday">
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+              </div>
+            </div>
+
+            <!-- Wednesday -->
+            <div class="day-column">
+              <div class="day-header">Wed</div>
+              <div class="day-cards" data-day="wednesday">
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+              </div>
+            </div>
+
+            <!-- Thursday -->
+            <div class="day-column">
+              <div class="day-header">Thu</div>
+              <div class="day-cards" data-day="thursday">
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+              </div>
+            </div>
+
+            <!-- Friday -->
+            <div class="day-column">
+              <div class="day-header">Fri</div>
+              <div class="day-cards" data-day="friday">
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+              </div>
+            </div>
+
+            <!-- Saturday -->
+            <div class="day-column">
+              <div class="day-header">Sat</div>
+              <div class="day-cards" data-day="saturday">
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+              </div>
+            </div>
+
+            <!-- Sunday -->
+            <div class="day-column">
+              <div class="day-header">Sun</div>
+              <div class="day-cards" data-day="sunday">
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+                <div class="day-card-skeleton"><div class="day-card-skeleton-cover skeleton"></div><div class="day-card-skeleton-body"><div class="day-card-skeleton-title skeleton"></div><div class="day-card-skeleton-time skeleton"></div></div></div>
+              </div>
+            </div>
+
+          </div><!-- .day-grid -->
+        </div><!-- .day-grid-wrap -->
+
+        <!-- ═══ Unknown / TBA Section ═══ -->
+        <div class="season-tba" id="season-tba">
+          <div class="season-tba-header">
+            <h2 class="season-tba-title">❓ Unknown / TBA</h2>
+            <span class="season-tba-count" id="tba-count">—</span>
+          </div>
+          <div class="scroll-row">
+            <div class="scroll-row-track" id="tba-track">
+              <div class="skeleton-card" style="flex:0 0 180px"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card" style="flex:0 0 180px"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card" style="flex:0 0 180px"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card" style="flex:0 0 180px"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card" style="flex:0 0 180px"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+              <div class="skeleton-card" style="flex:0 0 180px"><div class="skeleton-card-cover skeleton"></div><div class="skeleton-card-body"><div class="skeleton-card-title skeleton"></div><div class="skeleton-card-meta skeleton"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/api-bridge.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/shortcuts.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/seasonal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

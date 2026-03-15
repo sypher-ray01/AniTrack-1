@@ -1,0 +1,226 @@
+/* ============================================
+   AniTrack — Analytics Dashboard Styles
+   Stat Cards · Charts · Top Rated
+   ============================================ */
+
+.analytics-header {
+  margin-bottom: var(--space-xl);
+}
+
+.analytics-title {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2xs);
+}
+
+.analytics-subtitle {
+  font-size: var(--fs-base);
+  color: var(--text-muted);
+}
+
+/* ── Stat Cards ────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.stat-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--bg-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-xl);
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.stat-icon.gold {
+  color: var(--accent-gold);
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* ── Charts ────────────────────────────────── */
+.charts-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.chart-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.chart-card.full-width {
+  grid-column: 1 / -1;
+  margin-bottom: var(--space-xl);
+}
+
+.chart-title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-lg);
+}
+
+.chart-container-300 {
+  height: 300px;
+  position: relative;
+  width: 100%;
+}
+
+.chart-container-200 {
+  height: 200px;
+  position: relative;
+  width: 100%;
+}
+
+/* ── Top 5 Rated Table ─────────────────────── */
+.top-rated-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.section-title {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.top-table-wrap {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+}
+
+.top-table {
+  width: 100%;
+  min-width: 500px;
+}
+
+.top-table th {
+  text-align: left;
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+}
+
+.top-table td {
+  padding: var(--space-sm) var(--space-lg);
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
+}
+
+.top-table tr:last-child td {
+  border-bottom: none;
+}
+
+.top-table tr:hover {
+  background-color: var(--bg-hover);
+}
+
+.top-rank {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  color: var(--text-muted);
+  width: 40px;
+}
+
+.top-title-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.top-cover {
+  width: 40px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.top-title {
+  font-weight: var(--fw-semibold);
+}
+
+.top-score {
+  font-weight: var(--fw-bold);
+  color: var(--accent-gold);
+}
+
+/* ── Recommendations Row ───────────────────── */
+.recommendations-section {
+  margin-top: var(--space-2xl);
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 1024px) {
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+}

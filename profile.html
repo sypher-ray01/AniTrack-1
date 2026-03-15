@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage your AniTrack profile and account settings.">
+  <meta name="theme-color" content="#0D0D0D">
+  <title>My Profile — AniTrack</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/toast.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/badges.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <script>const t=localStorage.getItem('at_theme');if(t)document.documentElement.dataset.theme=t;</script>
+</head>
+<body data-page="profile" data-theme="dark">
+
+  <nav id="navbar"></nav>
+
+  <main class="page-wrapper">
+    <div class="container">
+      <section class="section">
+
+        <!-- ═══ Profile Header ═══ -->
+        <header class="profile-header">
+          <div class="profile-avatar-lg" id="profile-avatar">S</div>
+          
+          <div class="profile-info">
+            <h1 class="profile-username">
+              <span id="profile-name">super_weeb99</span>
+              <span class="badge" style="background:var(--accent-hover);color:white;font-size:10px">PRO</span>
+            </h1>
+            <p class="profile-joined">Joined October 2025</p>
+            <p class="profile-bio" id="profile-bio-text">I just really like mecha and slice of life anime. Sometimes both at the same time.</p>
+          </div>
+
+          <div class="profile-actions">
+            <button class="btn btn-secondary" id="btn-toggle-edit">✎ Edit Profile</button>
+          </div>
+        </header>
+
+        <!-- ═══ Stats Row (Smaller Variants) ═══ -->
+        <div class="profile-stat-grid">
+          <div class="profile-stat-card">
+            <div class="profile-stat-icon">📺</div>
+            <div class="profile-stat-info">
+              <span class="profile-stat-value">142</span>
+              <span class="profile-stat-label">Total Shows</span>
+            </div>
+          </div>
+          <div class="profile-stat-card">
+            <div class="profile-stat-icon">▶️</div>
+            <div class="profile-stat-info">
+              <span class="profile-stat-value">2,850</span>
+              <span class="profile-stat-label">Episodes</span>
+            </div>
+          </div>
+          <div class="profile-stat-card">
+            <div class="profile-stat-icon">⏱️</div>
+            <div class="profile-stat-info">
+              <span class="profile-stat-value">941h</span>
+              <span class="profile-stat-label">Watched</span>
+            </div>
+          </div>
+          <div class="profile-stat-card">
+            <div class="profile-stat-icon gold">⭐</div>
+            <div class="profile-stat-info">
+              <span class="profile-stat-value">7.8</span>
+              <span class="profile-stat-label">Avg Score</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ Two Column Settings Layout ═══ -->
+        <div class="settings-layout">
+          
+          <!-- Column 1: Edit Profile Form (Hidden by default) -->
+          <div class="settings-column">
+            <div id="edit-profile-section" class="settings-card hidden">
+              <h3 class="settings-card-title">Edit Profile Information</h3>
+              
+              <form id="form-edit-profile">
+                <div class="form-group mb-md">
+                  <label class="form-label" for="edit-username">Display Name</label>
+                  <input type="text" class="form-input" id="edit-username" value="super_weeb99">
+                </div>
+                
+                <div class="form-group mb-md">
+                  <label class="form-label" for="edit-bio">Bio</label>
+                  <textarea class="form-input form-textarea" id="edit-bio" rows="4">I just really like mecha and slice of life anime. Sometimes both at the same time.</textarea>
+                </div>
+                
+                <div class="form-group mb-lg">
+                  <label class="form-label" for="edit-avatar">Avatar URL (optional)</label>
+                  <input type="url" class="form-input" id="edit-avatar" placeholder="https://example.com/my-avatar.jpg">
+                </div>
+
+                <div style="display:flex; gap:var(--space-sm)">
+                  <button type="button" class="btn btn-primary" id="btn-save-profile">Save Changes</button>
+                  <button type="button" class="btn btn-secondary" id="btn-cancel-edit">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Column 2: Account Settings -->
+          <div class="settings-column">
+            <div class="settings-card">
+              <h3 class="settings-card-title">Account Settings</h3>
+              
+              <h4 style="font-size:var(--fs-base);font-weight:var(--fw-semibold);margin-bottom:var(--space-sm)">Change Password</h4>
+              <form id="form-change-password">
+                <div class="form-group mb-sm">
+                  <input type="password" class="form-input" placeholder="Current password">
+                </div>
+                <div class="form-group mb-sm">
+                  <input type="password" class="form-input" placeholder="New password">
+                </div>
+                <div class="form-group mb-md">
+                  <input type="password" class="form-input" placeholder="Confirm new password">
+                </div>
+                <button type="button" class="btn btn-secondary">Update Password</button>
+              </form>
+
+              <!-- Danger Zone -->
+              <div class="danger-zone">
+                <h4 class="danger-title">Danger Zone</h4>
+                <p class="danger-desc">Once you delete your account data, there is no going back. Please be certain.</p>
+                <button class="btn btn-primary" style="background-color:var(--status-dropped);color:white;border-color:var(--status-dropped)">Delete Account & Data</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ═══ Recent Activity ═══ -->
+        <div class="activity-section">
+          <h2 style="font-size:var(--fs-xl);font-weight:var(--fw-bold);color:var(--text-primary)">Recent Activity</h2>
+          
+          <div class="activity-feed">
+            <div class="activity-item">
+              <div class="activity-icon" style="color:var(--status-complete)">📺</div>
+              <div class="activity-content">
+                <div class="activity-text">Completed <strong>Frieren: Beyond Journey's End</strong>. Rated it 10/10.</div>
+                <div class="activity-time">2 hours ago</div>
+              </div>
+            </div>
+            
+            <div class="activity-item">
+              <div class="activity-icon" style="color:var(--accent-primary)">▶️</div>
+              <div class="activity-content">
+                <div class="activity-text">Watched episode 12 of <strong>Solo Leveling</strong></div>
+                <div class="activity-time">Yesterday at 9:45 PM</div>
+              </div>
+            </div>
+            
+            <div class="activity-item">
+              <div class="activity-icon" style="color:var(--status-watching)">➕</div>
+              <div class="activity-content">
+                <div class="activity-text">Added <strong>Kaiju No. 8</strong> to Watching list</div>
+                <div class="activity-time">2 days ago</div>
+              </div>
+            </div>
+            
+            <div class="activity-item">
+              <div class="activity-icon" style="color:var(--status-planned)">📋</div>
+              <div class="activity-content">
+                <div class="activity-text">Added <strong>Dandadan</strong> to Plan to Watch list</div>
+                <div class="activity-time">Oct 12, 2025</div>
+              </div>
+            </div>
+            
+            <div class="activity-item">
+              <div class="activity-icon" style="color:var(--accent-hover)">💬</div>
+              <div class="activity-content">
+                <div class="activity-text">Joined the club <strong>Mecha Enthusiasts</strong></div>
+                <div class="activity-time">Oct 10, 2025</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/api-bridge.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/shortcuts.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

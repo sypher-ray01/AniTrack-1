@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Club discussions, polls, and members on AniTrack.">
+  <meta name="theme-color" content="#0D0D0D">
+  <title>Club View — AniTrack</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/toast.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/badges.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/clubs.css">
+  <script>const t=localStorage.getItem('at_theme');if(t)document.documentElement.dataset.theme=t;</script>
+</head>
+<body data-page="club-detail" data-theme="dark">
+
+  <nav id="navbar"></nav>
+
+  <main class="page-wrapper">
+    <div class="container">
+      <section class="section">
+
+        <!-- ═══ Club Hero ═══ -->
+        <div class="club-detail-hero" id="club-hero">
+          <div class="club-detail-banner">
+            <div class="skeleton" style="width:100%;height:100%"></div>
+          </div>
+          <div class="club-detail-info">
+            <div class="club-detail-title-wrap">
+              <h1 class="club-detail-title" id="club-title">
+                <span class="skeleton" style="display:inline-block;width:240px;height:28px;border-radius:6px"></span>
+              </h1>
+              <div class="club-detail-meta" id="club-meta">
+                <span class="skeleton" style="display:inline-block;width:80px;height:14px;border-radius:4px"></span>
+                <span class="skeleton" style="display:inline-block;width:60px;height:14px;border-radius:4px"></span>
+              </div>
+            </div>
+            <button class="btn btn-primary" id="club-action-btn">Join Club</button>
+          </div>
+        </div>
+
+        <!-- ═══ 2-Column Layout ═══ -->
+        <div class="club-layout">
+          
+          <!-- ── Main Column: Threads ── -->
+          <div class="club-main">
+            <!-- Thread List View -->
+            <div id="thread-list-view">
+              <div class="thread-header">
+                <h2 class="clubs-title" style="font-size:var(--fs-xl)">Threads</h2>
+                <button class="btn btn-primary" id="btn-create-thread">✍️ Create Thread</button>
+              </div>
+
+              <div class="thread-list" id="thread-list">
+                <!-- Skeleton Thread Cards -->
+                <div class="thread-card">
+                  <div class="thread-card-top">
+                    <div class="thread-card-title"><span class="skeleton" style="display:inline-block;width:200px;height:18px;border-radius:4px"></span></div>
+                    <span class="thread-badge reply-count"><span class="skeleton" style="display:inline-block;width:24px;height:12px;border-radius:2px"></span></span>
+                  </div>
+                  <div class="thread-card-meta"><span class="skeleton" style="display:inline-block;width:120px;height:12px;border-radius:3px"></span></div>
+                  <div class="thread-card-preview">
+                    <div class="skeleton" style="width:100%;height:14px;border-radius:3px;margin-bottom:4px"></div>
+                    <div class="skeleton" style="width:80%;height:14px;border-radius:3px"></div>
+                  </div>
+                </div>
+
+                <div class="thread-card">
+                  <div class="thread-card-top">
+                    <div class="thread-card-title">
+                      <span class="skeleton" style="display:inline-block;width:180px;height:18px;border-radius:4px"></span>
+                      <span class="thread-badge pinned">Pinned</span>
+                    </div>
+                    <span class="thread-badge reply-count"><span class="skeleton" style="display:inline-block;width:20px;height:12px;border-radius:2px"></span></span>
+                  </div>
+                  <div class="thread-card-meta"><span class="skeleton" style="display:inline-block;width:140px;height:12px;border-radius:3px"></span></div>
+                  <div class="thread-card-preview">
+                    <div class="skeleton" style="width:100%;height:14px;border-radius:3px;margin-bottom:4px"></div>
+                    <div class="skeleton" style="width:90%;height:14px;border-radius:3px"></div>
+                  </div>
+                </div>
+
+                <div class="thread-card">
+                  <div class="thread-card-top">
+                    <div class="thread-card-title">
+                      <span class="skeleton" style="display:inline-block;width:260px;height:18px;border-radius:4px"></span>
+                      <span class="thread-badge spoiler">Spoiler</span>
+                    </div>
+                    <span class="thread-badge reply-count"><span class="skeleton" style="display:inline-block;width:28px;height:12px;border-radius:2px"></span></span>
+                  </div>
+                  <div class="thread-card-meta"><span class="skeleton" style="display:inline-block;width:100px;height:12px;border-radius:3px"></span></div>
+                  <div class="thread-card-preview">
+                    <div class="skeleton" style="width:100%;height:14px;border-radius:3px;margin-bottom:4px"></div>
+                    <div class="skeleton" style="width:75%;height:14px;border-radius:3px"></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Thread Detail View (Hidden by default) -->
+            <div id="thread-detail-view" class="hidden">
+              <button class="btn btn-secondary mb-md" id="btn-back-threads">← Back to Threads</button>
+              
+              <div class="thread-detail">
+                <h2 class="thread-detail-title" id="active-thread-title">Loading Thread…</h2>
+                <div class="thread-detail-meta">
+                  <span class="thread-detail-author" id="active-thread-author">
+                    <div class="skeleton" style="width:24px;height:24px;border-radius:50%"></div>
+                    <span class="skeleton" style="width:80px;height:14px;border-radius:3px"></span>
+                  </span>
+                  <span id="active-thread-time"><span class="skeleton" style="display:inline-block;width:60px;height:12px;border-radius:3px"></span></span>
+                </div>
+                
+                <div class="thread-detail-body" id="active-thread-body">
+                  <div class="skeleton-paragraph">
+                    <div class="skeleton" style="width:100%;height:16px;border-radius:4px"></div>
+                    <div class="skeleton" style="width:95%;height:16px;border-radius:4px"></div>
+                    <div class="skeleton" style="width:85%;height:16px;border-radius:4px"></div>
+                  </div>
+                </div>
+
+                <!-- Replies -->
+                <div class="replies-section">
+                  <h3 class="replies-title">Replies (<span id="reply-count-display">0</span>)</h3>
+                  
+                  <div class="reply-list" id="thread-replies">
+                    <!-- Standard Reply Skeleton -->
+                    <div class="reply-card">
+                      <div class="reply-avatar"><div class="skeleton" style="width:100%;height:100%;border-radius:50%"></div></div>
+                      <div class="reply-content">
+                        <div class="reply-header">
+                          <span class="reply-author"><span class="skeleton" style="display:inline-block;width:90px;height:14px;border-radius:3px"></span></span>
+                          <span class="reply-time"><span class="skeleton" style="display:inline-block;width:50px;height:12px;border-radius:3px"></span></span>
+                        </div>
+                        <div class="reply-body">
+                          <div class="skeleton" style="width:100%;height:14px;border-radius:3px;margin-bottom:4px"></div>
+                          <div class="skeleton" style="width:60%;height:14px;border-radius:3px"></div>
+                        </div>
+                        <div class="reply-actions">
+                          <button class="reply-btn">👍 <span class="skeleton" style="display:inline-block;width:12px;height:12px;border-radius:2px"></span></button>
+                          <button class="reply-btn">Reply</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Indented Reply Skeleton -->
+                    <div class="reply-card indented">
+                      <div class="reply-avatar"><div class="skeleton" style="width:100%;height:100%;border-radius:50%"></div></div>
+                      <div class="reply-content">
+                        <div class="reply-header">
+                          <span class="reply-author"><span class="skeleton" style="display:inline-block;width:70px;height:14px;border-radius:3px"></span></span>
+                          <span class="reply-time"><span class="skeleton" style="display:inline-block;width:40px;height:12px;border-radius:3px"></span></span>
+                        </div>
+                        <div class="reply-body">
+                          <div class="skeleton" style="width:100%;height:14px;border-radius:3px"></div>
+                        </div>
+                        <div class="reply-actions">
+                          <button class="reply-btn">👍 <span class="skeleton" style="display:inline-block;width:12px;height:12px;border-radius:2px"></span></button>
+                          <button class="reply-btn">Reply</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Spoiler Reply Example (Hardcoded layout for visual representation) -->
+                    <div class="reply-card">
+                      <div class="reply-avatar">A</div>
+                      <div class="reply-content">
+                        <div class="reply-header">
+                          <span class="reply-author">AnimeFan99</span>
+                          <span class="reply-time">2 hours ago</span>
+                        </div>
+                        <div class="reply-body spoiler-wrap spoiler">
+                          This is a secret spoiler content. You shouldn't see this unless you click it or hover over it!
+                        </div>
+                        <div class="reply-actions">
+                          <button class="reply-btn">👍 5</button>
+                          <button class="reply-btn">Reply</button>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- Reply Form -->
+                  <div class="reply-form-container" id="reply-form-wrap">
+                    <h4 style="font-size:var(--fs-base);font-weight:var(--fw-semibold);margin-bottom:var(--space-sm)">Leave a Reply</h4>
+                    <div class="form-group mb-sm">
+                      <textarea class="form-input form-textarea" id="reply-input" placeholder="What are your thoughts?" rows="3"></textarea>
+                    </div>
+                    <div class="auth-checkbox mb-sm">
+                      <input type="checkbox" id="reply-spoiler">
+                      <label for="reply-spoiler">Contains spoilers</label>
+                    </div>
+                    <button class="btn btn-primary" id="btn-submit-reply">Post Reply</button>
+                  </div>
+
+                </div>
+              </div>
+            </div><!-- /#thread-detail-view -->
+
+          </div>
+
+          <!-- ── Sidebar Column ── -->
+          <aside class="club-sidebar">
+            
+            <!-- Active Polls -->
+            <div class="club-sidebar-section" id="polls-section">
+              <h3 class="club-sidebar-title">Active Polls</h3>
+              
+              <div class="club-poll-card">
+                <h4 class="club-poll-q">What is the best anime of this season?</h4>
+                <div class="club-poll-options">
+                  <button class="club-poll-btn">Option A</button>
+                  <button class="club-poll-btn">Option B</button>
+                  <button class="club-poll-btn">Option C</button>
+                </div>
+              </div>
+              
+              <!-- Create Poll button (Admin only, hidden by default) -->
+              <button class="btn btn-secondary mt-md hidden" id="btn-create-poll" style="width:100%">Create Poll</button>
+            </div>
+
+            <!-- Members -->
+            <div class="club-sidebar-section" id="members-section">
+              <h3 class="club-sidebar-title">
+                Members
+                <span style="font-size:var(--fs-xs);font-weight:var(--fw-normal);color:var(--text-muted)">View All</span>
+              </h3>
+              <div class="club-members-list">
+                <div class="club-member">
+                  <div class="club-member-avatar skeleton"></div>
+                  <span class="club-member-name"><span class="skeleton" style="display:inline-block;width:80px;height:14px;border-radius:3px"></span></span>
+                </div>
+                <div class="club-member">
+                  <div class="club-member-avatar skeleton"></div>
+                  <span class="club-member-name"><span class="skeleton" style="display:inline-block;width:100px;height:14px;border-radius:3px"></span></span>
+                </div>
+                <div class="club-member">
+                  <div class="club-member-avatar skeleton"></div>
+                  <span class="club-member-name"><span class="skeleton" style="display:inline-block;width:60px;height:14px;border-radius:3px"></span></span>
+                </div>
+                <div class="club-member">
+                  <div class="club-member-avatar skeleton"></div>
+                  <span class="club-member-name"><span class="skeleton" style="display:inline-block;width:90px;height:14px;border-radius:3px"></span></span>
+                </div>
+                <div class="club-member">
+                  <div class="club-member-avatar skeleton"></div>
+                  <span class="club-member-name"><span class="skeleton" style="display:inline-block;width:75px;height:14px;border-radius:3px"></span></span>
+                </div>
+              </div>
+            </div>
+
+          </aside>
+
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- ═══ Create Thread Modal ═══ -->
+  <div class="modal-overlay hidden" id="modal-create-thread">
+    <div class="modal dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Create New Thread</h3>
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-create-thread">
+          <div class="form-group mb-sm">
+            <label class="form-label" for="thread-title">Title</label>
+            <input type="text" class="form-input" id="thread-title" placeholder="What do you want to discuss?" required>
+          </div>
+          <div class="form-group mb-sm">
+            <label class="form-label" for="thread-body-input">Message</label>
+            <textarea class="form-input form-textarea" id="thread-body-input" placeholder="Add more details..." rows="5" required></textarea>
+          </div>
+          <div class="auth-checkbox mb-md">
+            <input type="checkbox" id="thread-spoiler">
+            <label for="thread-spoiler">Flag as spoiler</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary modal-cancel">Cancel</button>
+        <button class="btn btn-primary" id="submit-create-thread">Post Thread</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/api-bridge.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/shortcuts.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

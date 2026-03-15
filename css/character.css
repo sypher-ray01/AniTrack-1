@@ -1,0 +1,250 @@
+/* ============================================
+   AniTrack — Character Page Styles
+   Profile · Voice Actors · Appearances
+   ============================================ */
+
+/* ── Character Profile Hero ────────────────── */
+.character-hero {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
+
+/* Image */
+.character-image {
+  width: 240px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  flex-shrink: 0;
+}
+
+.character-image img {
+  width: 100%;
+  aspect-ratio: var(--card-ratio);
+  object-fit: cover;
+  display: block;
+}
+
+.character-image-skeleton {
+  width: 240px;
+  aspect-ratio: var(--card-ratio);
+  border-radius: var(--radius-lg);
+}
+
+/* Info */
+.character-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.character-name {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+}
+
+.character-name-jp {
+  font-size: var(--fs-default);
+  color: var(--text-muted);
+  font-weight: var(--fw-regular);
+  margin-top: var(--space-2xs);
+}
+
+.character-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+
+.character-meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.character-meta-label {
+  color: var(--text-muted);
+}
+
+.character-about {
+  font-size: var(--fs-default);
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  max-height: 240px;
+  overflow: hidden;
+  position: relative;
+  transition: max-height var(--transition-slow);
+}
+
+.character-about.expanded {
+  max-height: none;
+}
+
+.character-about-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(transparent, var(--bg-primary));
+  pointer-events: none;
+}
+
+.character-about.expanded .character-about-fade {
+  display: none;
+}
+
+.character-about-toggle {
+  font-size: var(--fs-sm);
+  color: var(--accent-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: var(--fw-medium);
+  padding: 0;
+  margin-top: var(--space-xs);
+  transition: color var(--transition-fast);
+}
+
+.character-about-toggle:hover {
+  color: var(--accent-hover);
+}
+
+/* ── Voice Actors Table ────────────────────── */
+.character-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.character-section-title {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.va-table-wrap {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--bg-card);
+}
+
+.va-table {
+  width: 100%;
+}
+
+.va-table th {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: left;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.va-table td {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--fs-default);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+}
+
+.va-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.va-table tbody tr:hover {
+  background-color: var(--bg-hover);
+}
+
+.va-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.va-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.va-name {
+  font-weight: var(--fw-medium);
+}
+
+.va-language {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+/* ── Anime Appearances Grid ────────────────── */
+.character-appearances-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-lg);
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 768px) {
+  .character-hero {
+    grid-template-columns: 160px 1fr;
+    gap: var(--space-md);
+  }
+
+  .character-image {
+    width: 160px;
+  }
+
+  .character-image-skeleton {
+    width: 160px;
+  }
+
+  .character-name {
+    font-size: var(--fs-lg);
+  }
+
+  .va-table-wrap {
+    overflow-x: auto;
+  }
+
+  .character-appearances-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .character-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .character-image {
+    width: 180px;
+    margin: 0 auto;
+  }
+
+  .character-image-skeleton {
+    width: 180px;
+    margin: 0 auto;
+  }
+
+  .character-meta {
+    justify-content: center;
+  }
+}

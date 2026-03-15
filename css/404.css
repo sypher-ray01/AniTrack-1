@@ -1,0 +1,53 @@
+/* ============================================
+   AniTrack — 404 Page Styles
+   ============================================ */
+.not-found-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--space-xl);
+  text-align: center;
+  background-color: var(--bg-primary);
+}
+
+.not-found-code {
+  font-size: 120px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--accent-primary);
+  margin-bottom: var(--space-md);
+  text-shadow: var(--shadow-glow);
+  letter-spacing: -2px;
+}
+
+.not-found-title {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.not-found-message {
+  font-size: var(--fs-lg);
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin-bottom: var(--space-2xl);
+  line-height: var(--lh-relaxed);
+}
+
+.not-found-actions {
+  display: flex;
+  gap: var(--space-md);
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 480px) {
+  .not-found-code {
+    font-size: 80px;
+  }
+  .not-found-title {
+    font-size: var(--fs-2xl);
+  }
+}
